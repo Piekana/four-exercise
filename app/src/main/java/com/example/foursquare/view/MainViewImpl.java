@@ -27,6 +27,7 @@ public class MainViewImpl extends Activity implements MainView {
     private NetAccess mNetwork;
     private ListView mListView;
     private TextView mStatusView;
+    private EditText mVenueSearchView;
 
     private CharSequence mVenueSearchWord = "";
 
@@ -37,34 +38,8 @@ public class MainViewImpl extends Activity implements MainView {
         setContentView(R.layout.activity_main);
 
         mListView = (ListView) findViewById(R.id.search_results_list);
-        EditText venueSearch = (EditText) findViewById(R.id.venue_search);
+        mVenueSearchView = (EditText) findViewById(R.id.venue_search);
         mStatusView = (TextView) findViewById(R.id.status_text);
-
-        venueSearch.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void onTextChanged(CharSequence s, int st, int b, int c) {
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int st, int c, int a) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable venueSearchWord) {
-                mVenueSearchWord = venueSearchWord.toString();
-                Log.d(TAG, "mVenueSearchWord: " + mVenueSearchWord);
-                if (mVenueSearchWord.equals("")) {
-                    mListView.setAdapter(null);
-                    mStatusView.setText(R.string.default_search_text);
-                }
-                if (!mVenueSearchWord.equals(venueSearchWord.toString())) {
-                    // We don't wont to trigger new search if search word has not changed
-                    // This can easily happen if view is rotated and activity gets re-created
-                    mPresenter.searchVenues(mVenueSearchWord.toString());
-                }
-            }
-        });
     }
 
     @Override
@@ -78,6 +53,32 @@ public class MainViewImpl extends Activity implements MainView {
             mPresenter = new SearchPresenterImpl(this, mNetwork, mLocate);
         }
         mPresenter.resume();
+        mVenueSearchView.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int st, int b, int c) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int st, int c, int a) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable venueSearchWord) {
+                Log.d(TAG, "mVenueSearchWord: " + mVenueSearchWord);
+                if (mVenueSearchWord.equals("")) {
+                    mListView.setAdapter(null);
+                    mStatusView.setText(R.string.default_search_text);
+                }
+                if (!mVenueSearchWord.equals(venueSearchWord.toString())) {
+                    Log.d(TAG, "mVenueSearchWord" + mVenueSearchWord + "venueSearchWord" + venueSearchWord.toString());
+                    mVenueSearchWord = venueSearchWord.toString();
+                    // We don't wont to trigger new search if search word has not changed
+                    // This can easily happen if view is rotated and activity gets re-created
+                    mPresenter.searchVenues(mVenueSearchWord.toString());
+                }
+            }
+        });
     }
 
     @Override

@@ -136,20 +136,6 @@ public class MainViewTest extends ActivityInstrumentationTestCase2<MainViewImpl>
         assertEquals("Search results list adapter not null", testName + 0, itemVenue.mName);
     }
 
-//   TODO  public void testTextInput() {
-//        // Send string input value
-//        getInstrumentation().runOnMainSync(new Runnable() {
-//            @Override
-//            public void run() {
-//                mVenueSearch.requestFocus();
-//            }
-//        });
-//        getInstrumentation().waitForIdleSync();
-//        getInstrumentation().sendStringSync("Hello Android!");
-//        getInstrumentation().waitForIdleSync();
-//        Help.sleep(10000);
-//    }
-
     private Venue createTestVenue(int index) {
         Venue venue = new Venue();
         venue.mAddress = testAddress + index;
@@ -164,5 +150,11 @@ public class MainViewTest extends ActivityInstrumentationTestCase2<MainViewImpl>
         assertEquals("Search results list adapter not null", testAddress + index, itemVenue.mAddress);
         assertEquals("Search results list adapter not null", 100 + index, itemVenue.mDistance);
         assertEquals("Search results list adapter not null", testName + index, itemVenue.mName);
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        mMainView = null;
     }
 }
