@@ -1,0 +1,46 @@
+{meta: {code: 200,
+requestId: "56324084498e91c1ea3e88eb"
+},
+notifications: [{type: "notificationTray",
+item: {unreadCount: 0
+}
+}
+],
+response: {venues: [{id: "5191da96498e63587fd7e4c4",
+name: "Mercedes Vito Koeajo",
+contact: { },
+location: {address: "Rita-aukiontie",
+lat: 65.019004,
+lng: 25.538291,
+distance: 100,
+cc: "FI",
+country: "Suomi"
+},
+categories: [{id: "4f2a23984b9023bd5841ed2c",
+name: "Moving Target",
+pluralName: "Moving Targets",
+shortName: "Moving Target",
+icon: {prefix: "https://ss3.4sqi.net/img/categories_v2/travel/movingtarget_",
+suffix: ".png"
+},
+primary: true
+}
+],
+verified: false,
+stats: {checkinsCount: 0,
+usersCount: 0,
+tipCount: 0
+},
+specials: {count: 0,
+items: [ ]
+},
+hereNow: {count: 0,
+summary: "Nobody here",
+groups: [ ]
+},
+referralId: "v-1446133892",
+venueChains: [ ]
+}
+]
+}
+}

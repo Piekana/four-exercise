@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Foursquare exercise</string>
+    <string name="search_hint">Type venue name here</string>
+    <string name="name_and_distance">%1$s %2$sm</string>
+    <string name="default_search_text">Looking for something?</string>
+    <string name="results_search_text">Results</string>
+    <string name="error_gps_not_enabled">GPS not enabled</string>
+    <string name="error_location_failed">Could not locate current position</string>
+    <string name="error_search_failed">No venues found</string>
+</resources>
